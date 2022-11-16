@@ -23,22 +23,22 @@ jobs:
     - name: Setup variables
       id: setup
       run: |
-        echo "::set-output name=history::history_report.html"
-        echo "::set-output name=deployment:: gh-pages"
-        echo "::set-output name=other-repo::gh-pages-repo"
+        echo "{history}={history_report.html}" >> $GITHUB_ENV
+        echo "{deployment}={gh-pages}" >> $GITHUB_ENV
+        echo "{other-repo}={gh-pages-repo}" >> $GITHUB_ENV
 
     - name: Checkout repo for gh-pages branch
       uses: actions/checkout@v2
       with:
         repository: ${{ github.repository }}
-        ref: ${{ steps.setup.outputs.deployment }}
-        path: ${{ steps.setup.outputs.other-repo }}
+        ref: ${{ env.deployment }}
+        path: ${{ env.other-repo }}
 
     - name: Memote short run
       run: |
         git config --global user.name "memote-bot"
         memote run --skip-unchanged --solver-timeout 30 \
-        --deployment gh-pages --location results\
+        --deployment gh-pages --location results \
         azotobacter_vinelandii_dj/iDT1278.xml 
         
 
@@ -46,15 +46,15 @@ jobs:
       run: |
         # Generate the history report on the deployment branch
         memote report history \
-        --filename="${{ steps.setup.outputs.other-repo }}/${{ steps.setup.outputs.history }}"
+        --filename="${{ env.other-repo }}/${{ env.history }}"
 
     - name: Auto-commit results
       uses: stefanzweifel/git-auto-commit-action@v4.4.0
       with:
         commit_user_name: memote-bot
         commit_message: "chore: update memote history report"
-        file_pattern: ${{ steps.setup.outputs.history }}
-        branch: ${{ steps.setup.outputs.deployment }}
-        repository: ${{ steps.setup.outputs.other-repo }}
+        file_pattern: ${{ env.history }}
+        branch: ${{ env.deployment }}
+        repository: ${{ env.other-repo }}
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
