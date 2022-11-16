@@ -37,7 +37,7 @@ jobs:
     - name: Memote short run
       run: |
         git config --global user.name "memote-bot"
-        memote run --skip-unchanged --solver-timeout 30
+        memote run --skip-unchanged --solver-timeout 30 azotobacter_vinelandii_dj/iDT1278.xml
 
     - name: Compute Memote history on push
       run: |
