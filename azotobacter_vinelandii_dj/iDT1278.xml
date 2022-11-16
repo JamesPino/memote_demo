@@ -14,7 +14,7 @@
       <compartment metaid="u" sboTerm="SBO:0000240" id="u" name="unknownCompartment1" spatialDimensions="3" size="1" constant="true"/>
     </listOfCompartments>
     <listOfSpecies>
-      <species metaid="M_2pg_c_u" sboTerm="SBO:0000240" id="M_2pg_c_u" name="D-Glycerate 2-phosphate" compartment="u" initialAmount="1" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" fbc:chemicalFormula="C3H4O7P"/>
+      <species metaid="M_2pg_c" sboTerm="SBO:0000240" id="M_2pg_c" name="D-Glycerate 2-phosphate" compartment="c" initialAmount="1" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" fbc:chemicalFormula="C3H4O7P"/>
       <species metaid="M_13dpg_c_u" sboTerm="SBO:0000240" id="M_13dpg_c_u" name="3-Phospho-D-glyceroyl phosphate" compartment="u" initialAmount="1" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" fbc:chemicalFormula="C3H4O10P2"/>
       <species metaid="M_prbamp_c_u" sboTerm="SBO:0000240" id="M_prbamp_c_u" name="1-(5-Phosphoribosyl)-AMP" compartment="u" initialAmount="1" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" fbc:chemicalFormula="C15H19N5O14P2"/>
       <species metaid="M_grdp_c_u" sboTerm="SBO:0000240" id="M_grdp_c_u" name="Geranyl diphosphate" compartment="u" initialAmount="1" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" fbc:chemicalFormula="C10H17O7P2"/>
