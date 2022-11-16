@@ -1,13 +1,3 @@
-"""
-Fixes iDTR1278.xml model compartment naming.
-
-For some reason, the model compartment is labeled as '_u' for all species.
-Within the model, the BIGG ids add _* to each ID, ie, atp_p for periplasm.
-So with the _u error, there would be atp_p_u, which throws off comparisons.
-Fixing this plus exporting model, then will do a comparison between the
-models to see what the differences are.
-"""
-from memote.suite.cli.reports import diff
 import cobra
 import os
 
@@ -32,8 +22,6 @@ def modify_compartments(model):
 
 def modify_model():
     av = modify_compartments(s_model)
-    output_model_name = 'iDT1278.xml'
-    output_model_path = os.path.join(_file_path, output_model_name)
     cobra.io.write_sbml_model(av, s_model_path)
 
 

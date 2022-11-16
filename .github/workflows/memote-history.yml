@@ -38,13 +38,14 @@ jobs:
     - name: Memote short run
       run: |
         git config --global user.name "memote-bot"
-        memote run --solver-timeout 30 --deployment ${{ env.deployment }} azotobacter_vinelandii_dj/iDT1278.xml 
+        memote run azotobacter_vinelandii_dj/iDT1278.xml 
         
 
     - name: Compute Memote history on push
       run: |
         # Generate the history report on the deployment branch
-        memote report history --filename="${{ env.other-repo }}/${{ env.history }}"
+        memote report history --model azotobacter_vinelandii_dj/iDT1278.xml \
+        --filename="${{ env.other-repo }}/${{ env.history }}"
 
     - name: Auto-commit results
       uses: stefanzweifel/git-auto-commit-action@v4.4.0
