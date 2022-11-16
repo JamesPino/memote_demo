@@ -26,6 +26,7 @@ jobs:
         echo "{history}={history_report.html}" >> $GITHUB_ENV
         echo "{deployment}={gh-pages}" >> $GITHUB_ENV
         echo "{other-repo}={gh-pages-repo}" >> $GITHUB_ENV
+        echo "MEMOTE_LOCATION=results" >> $GITHUB_ENV
 
     - name: Checkout repo for gh-pages branch
       uses: actions/checkout@v2
@@ -39,7 +40,7 @@ jobs:
         git config --global user.name "memote-bot"
         memote run --solver-timeout 30 \
         --deployment ${{ env.deployment }} \
-        --location results azotobacter_vinelandii_dj/iDT1278.xml 
+        azotobacter_vinelandii_dj/iDT1278.xml 
         
 
     - name: Compute Memote history on push
