@@ -23,9 +23,9 @@ jobs:
     - name: Setup variables
       id: setup
       run: |
-        echo "{history}={history_report.html}" >> $GITHUB_ENV
-        echo "{deployment}={gh-pages}" >> $GITHUB_ENV
-        echo "{other-repo}={gh-pages-repo}" >> $GITHUB_ENV
+        echo "history=history_report.html" >> $GITHUB_ENV
+        echo "deployment=gh-pages" >> $GITHUB_ENV
+        echo "other-repo=gh-pages-repo" >> $GITHUB_ENV
         echo "MEMOTE_LOCATION=results" >> $GITHUB_ENV
 
     - name: Checkout repo for gh-pages branch
@@ -38,9 +38,7 @@ jobs:
     - name: Memote short run
       run: |
         git config --global user.name "memote-bot"
-        memote run --solver-timeout 30 \
-        --deployment ${{ env.deployment }} \
-        azotobacter_vinelandii_dj/iDT1278.xml 
+        memote run --solver-timeout 30 --deployment ${{ env.deployment }} azotobacter_vinelandii_dj/iDT1278.xml 
         
 
     - name: Compute Memote history on push
