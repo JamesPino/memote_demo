@@ -39,8 +39,7 @@ jobs:
         git config --global user.name "memote-bot"
         memote run --solver-timeout 30 \
         --deployment ${{ env.deployment }} \
-        --location results  \
-        azotobacter_vinelandii_dj/iDT1278.xml 
+        --location results azotobacter_vinelandii_dj/iDT1278.xml 
         
 
     - name: Compute Memote history on push
